@@ -1,0 +1,7 @@
+{% extends "card/base.html" %}
+{% block content %}
+<h1>Chose the topic</h1>
+{% for category in categories %}
+<a type="button" class="btn btn-primary" href="{% url 'cards' category.pk %} ">{{ category.name }}</a>
+{% endfor %}
+{% endblock content %}}
