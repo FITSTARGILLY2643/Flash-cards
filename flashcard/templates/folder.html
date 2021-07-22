@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load tz %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row mt-5">
+        <div style="text-align: center;" class="col-1"></div>
+        <div class="col-10 d-flex justify-content-left align-items-center">
+            <h4 style="color: maroon;">{{ folder.title }}</h4>
+            <a href="{% url 'add-card' folder=folder.id %}" class="btn btn-info btn-sm my-2 ml-4">Add Card</a>
+        </div>
+        <div class="col-1"></div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-1"></div>
+        <div id="folder-container" class="col-10">
+            {% for card in cards %}
+            <div class="card" style="width: 15rem;">
+                <div class="card-body">
+                    <h6 style="color:blue"class="card-title">{{ card.title }}</h6>
+                    <p class="card-text">{{ card.notes }}</p>
+                    <a href="{% url 'edit-card' card=card.id %}" class="btn btn-info btn-sm">Edit Card</a> 
+                    <a href="{% url 'delete' card=card.id%}"class="btn btn-danger btn-sm">Delete Card</a>
+                    <p style="color:grey" class="card-text mt-3">{% localtime on %} Created: {{ card.date_created }} {% endlocaltime %}</p>
+                    <p style="color:grey" class="card-text mt-3">{% localtime on %} Last Updated: {{ card.date_updated }} {% endlocaltime %}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="col-1"></div>
+        <div class="col-1"></div>
+    </div>
+</div>
+{% endblock %}
