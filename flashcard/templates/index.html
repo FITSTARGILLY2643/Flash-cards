@@ -1,22 +1,30 @@
-{% extends 'base.html' %}
-
-{% block content %}
-    <div class="container-fluid">
-        <div class="row mt-5">
-           
-            <div class="col-10 d-flex justify-content-left">
-                <h3 style="text-align:center; color:blue">Home</h3>
-            </div>
-            
-        </div>
-        <div class="row mt-4">
-            <div class="col-1"></div>
-            <div class="col-10 d-flex flex-column">
-                {% for folder in folders %}
-                    <a href="{% url 'folder' folder=folder.id %}" class="lead text-muted">{{folder.title }}</a>
-                {% endfor %}
-            </div>
-            <div class="col-1"></div>
-        </div>
+{% extends 'base.html' %} {% block content %}
+<div class="container-fluid" style="background-color: #e3f2fd">
+  <div class="row">
+    <div class="ml-4">
+      <h3 style="text-align: center; color: blue">Subjects</h3>
     </div>
+     
+    
+  </div>
+  <div class="row mt-2">
+    {% for folder in folders %}
+      <div class="col-3" style="margin-top: 5px; margin-bottom: 5px">
+        <div class="card" style="width: 10rem">
+          <div class="card-body">
+            <a
+              href="{% url 'folder' folder=folder.id %}"
+              class="lead text-muted"
+              >{{folder.title }}</a
+            >
+          </div>
+        </div>
+      </div> 
+      {% endfor %}
+
+    </div>
+
+   
+  </div>
+</div>
 {% endblock %}
