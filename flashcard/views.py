@@ -1,10 +1,12 @@
 from flashcard.models import Folder,Card,Profile
 from django.shortcuts import render, redirect
 from .forms import RegisterForm,AddFolderForm, AddCardForm
+from django.contrib.auth.decorators import login_required
 from .models import Folder, Card
 from django.utils import timezone
 
 # Create your views here.
+@login_required(login_url='/accounts/login/')
 def home(request):
     folders = Folder.objects.filter(user_id=request.user.id)
     return render(request, 'index.html', {"folders": folders})
