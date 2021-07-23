@@ -24,12 +24,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = 'django-insecure-d4jh+99l6v16#xb!%jj&icoi58u68-@w%6l#o2!myjy-*k7+$e'
+SECRET_KEY ='django-insecure-d4jh+99l6v16#xb!%jj&icoi58u68-@w%6l#o2!myjy-*k7+$e'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
+DEBUG = True
 
-# ALLOWED_HOSTS = []
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -88,9 +88,9 @@ if config('MODE')=="dev":
    DATABASES = {
        'default': {
            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-           'NAME': config('DB_NAME'),
-           'USER': config('DB_USER'),
-           'PASSWORD': config('DB_PASSWORD'),
+           'NAME': 'flashcards',
+           'USER': 'carey',
+           'PASSWORD': 'carey',
            'HOST': config('DB_HOST'),
            'PORT': '',
        }
